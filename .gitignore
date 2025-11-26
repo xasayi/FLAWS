@@ -1,0 +1,4 @@
+code/data/*
+code/annotation/*
+.DS_Store
+data/.DS_Store

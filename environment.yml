@@ -1,0 +1,15 @@
+name: llm_error
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - numpy
+      - pypdf2
+      - pymupdf
+      - openai
+      - anthropic
+      - google-generativeai
+      - arxiv
+      - openreview-py
