@@ -44,10 +44,17 @@ model_family_identification = "deepseek"  # Options: anthropic, deepseek, gemini
 model_identification = "deepseek-reasoner"  # Specific model name
 ```
 
-To run the evaluation code, use the following line, this will produce a JSON results file and print out the identification accuracy.  
+To run the evaluation code on all the paper-error pairs, use `python -m src.evaluate_llm`, this will produce a JSON results file and print out the identification accuracy. If you only wish to evaluate you model on a subset of paper-error pairs, modify this section:
 
 ```bash
-python -m src.evaluate_llm
+with open(file, "r") as f:
+    valid_errors = json.load(f)
+identification_dict = defaultdict(list)
+
+# if you only want to evaluate k examples, use replace with this line
+# for paper, c in list(valid_errors.items())[:k]:
+for paper, c in valid_errors.items():
+    ...
 ```
 
 To add a new model provider, update `src/utils/llm_calls.py`:
