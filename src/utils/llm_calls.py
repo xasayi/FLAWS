@@ -240,7 +240,7 @@ def completion_response(
         "openai": get_completion_openai,
         "gemini": get_completion_gemini,
         "anthropic": get_completion_anthropic,
-        "grok": get_completion_grok,
+        "xai": get_completion_grok,
         "deepseek": get_completion_deepseek,
     }
     completion = completion_mapping[model_family]
