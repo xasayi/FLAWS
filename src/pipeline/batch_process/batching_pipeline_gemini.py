@@ -124,7 +124,7 @@ if __name__ == "__main__":
     model_insertion = "gemini-2.5-pro"
 
     """CHANGE THIS FOR VERSION CONTROL"""
-    version_control = "cleanup_batch"
+    version_control = "test_batch"
 
     # make the necessary result folders
     os.makedirs(f"data/{version_control}", exist_ok=True)

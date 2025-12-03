@@ -26,7 +26,7 @@ if __name__ == "__main__":
     levenshtein_threshold = 0.5
     top_k = 10
 
-    dataset_name = "llm-error-datasets"
+    dataset_name = "data"
     model_names = {
         "gemini-2.5-pro": ["ALL_GEMINI", "gemini_all"],
         "gpt-5-2025-08-07": ["ALL_OPENAI", "openai_all"],

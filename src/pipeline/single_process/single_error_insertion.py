@@ -291,7 +291,7 @@ if __name__ == "__main__":
     model_insertion = "gemini-2.5-pro"
 
     """CHANGE THIS FOR VERSION CONTROL"""
-    version_control = "cleanup"
+    version_control = "test"
 
     os.makedirs(f"data/{version_control}", exist_ok=True)
     os.makedirs(f"data/{version_control}/altered_papers", exist_ok=True)

@@ -218,7 +218,7 @@ if __name__ == "__main__":
     model_identification = "deepseek-reasoner"
 
     """CHANGE THIS FOR VERSION CONTROL"""
-    version_control = "cleanup"
+    version_control = "test"
 
     error_folder = f"data/{version_control}/inserted_error"
     location_folder = f"data/{version_control}/location_error"
