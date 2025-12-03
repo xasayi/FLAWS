@@ -1,5 +1,5 @@
 # FLAWS: Fault Localization Across Writing in Science
-This repository holds the current benchmark dataset as well as the automated error insertion pipeline + the automated error identification & evaluation framework for the paper [FLAWS: A Benchmark for Error Identification and Localization in Scientific Papers]() (link to be added). Code here allows you to (i) evaluate LLMs on their ability to identify errors in scientific papers, (ii) insert claim-specific errors to research papers given their source LaTeX folders to create the dataset. 
+This repository holds the current benchmark dataset as well as the automated error insertion pipeline + the automated error identification & evaluation framework for the paper [FLAWS: A Benchmark for Error Identification and Localization in Scientific Papers](https://www.arxiv.org/abs/2511.21843). Code here allows you to (i) evaluate LLMs on their ability to identify errors in scientific papers, (ii) insert claim-specific errors to research papers given their source LaTeX folders to create the dataset. 
 
 Run the following commands to setup the environment:\
 `conda env create -f environment.yml`\
@@ -11,17 +11,18 @@ The benchmark datasets used in this project are hosted on Hugging Face. Download
 
 - [FLAWS Dataset](https://huggingface.co/datasets/xasayi/FLAWS)
 
-Currently, 5 frontier LLMs have been evaluated on this benchmark, with the following ranking:
+The current benchmark consists of 713 papers, with 265 unique papers that have been each inserted with one error using gpt-5, and 448 unique papers that have been each inserted with one error using gemini-2.5-pro. Currently, 5 frontier LLMs have been evaluated on this benchmark, with the following ranking (β_j is a logistic regression coefficience that represents their performance to identify errors, we use this to rank the models instead of their accuracy as this coefficients also accounts for differences between the errors inserted by the 2 insertion models):
 
-| **Model** | **Ranking** | **Identification Accuracy**
-|--------------------------|-------------|-------------|
-| GPT 5                    | 1           |39.1%        |
-| Deepseek Reasoner v3.1   | 2           |35.2%        |
-| Grok 4                   | 3           |23.4%        |
-| Claude Sonnet 4.5        | 4           |21.5%        |
-| Gemini 2.5 Pro           | 5           |19.8%        |
+| **Identification Model** | **Rank** | **Score β_j** | **Accuracy @k=3** | **Accuracy @k=10** |
+|--------------------------|----------|---------------|-------------------|--------------------|
+| GPT 5                    | 1        | 2.10          | 19.2%             | 39.1%              |
+| Deepseek Reasoner v3.1   | 2        | 1.90          | 16.3%             | 35.2%              |
+| Grok 4                   | 3        | 1.68          | 16.3%             | 23.4%              |
+| Claude Sonnet 4.5        | 4        | 1.47          | 12.6%             | 21.5%              |
+| Gemini 2.5 Pro           | 5        | 1.41          | 15.7%             | 19.8%              |
 
-The current benchmark consists of 713 papers, with 265 unique papers that have been each inserted with one error using gpt-5, and 448 unique papers that have been each inserted with one error using gemini-2.5-pro. To access the error identification ability of other models, you may run the module by using\
+
+To access the error identification ability of other models, you may run the module by using\
 `python -m src.evaluate_llm`
 
 Change the following arguments if you wish to test models other than the above providers
