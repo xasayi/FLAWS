@@ -36,7 +36,7 @@ Five frontier LLMs have been evaluated on this benchmark. Models are ranked usin
 | Claude Sonnet 4.5        | 4        | 1.47          | 12.6%            | 21.5%             |
 | Gemini 2.5 Pro           | 5        | 1.41          | 15.7%            | 19.8%             |
 
-To evaluate other models by these 5 model providers - anthropic, deepseek, gemini, openai, xai - go to src/evaluate_llm.py and Modify the following parameters to test different models:
+To evaluate other models by these 5 model providers - anthropic, deepseek, gemini, openai, xai - go to `src/evaluate_llm.py` and modify the following parameters to test different models:
 
 ```python
 # CHANGE THE IDENTIFICATION MODELS
@@ -81,7 +81,7 @@ To insert an error into a paper and evaluate an LLM's ability to identify it:
 ### 1. Single Error Insertion
 
 **Entry Point:**
-To run the error insertion for a single paper, modify the following in src/pipeline/single_process/single_error_insertion:
+To run the error insertion for a single paper, modify the following in `src/pipeline/single_process/single_error_insertion.py`:
 
 ```python
 # Version control for results
@@ -103,17 +103,17 @@ python -m src.pipeline.single_process.single_error_insertion
 By running the insertion pipeline, it will perform the following steps sequentially:
 
 1. Extract claims from the paper.
-2. Generate errors for the extracted claims.
-3. Filter out trivial or invalid errors.
-4. Insert errors into the LaTeX source.
-5. Localize text related to the error.
-6. Perform self-identification using the same LLM to filter trivial errors.
-7. Compile modified PDFs for the remaining errors.
+2. Generate an error for the specified claim.
+3. Filter the error out if it is invalid or trivial.
+4. If the error is not filtered out, insert it into the original LaTeX source.
+5. Localize all of the text excerpts related to the error.
+6. Perform self-identification using the same LLM to filter further filter out the error if it is too easy.
+7. Compile a modified PDF if the error is not filtered out.
 
 ### 2. Single Error Identification (+ Evaluation)
 
 **Entry Point:**
-To run the error identification and evaluation for a single paper, modify the following in src/pipeline/single_process/single_error_identification:
+To run the error identification and evaluation for a single paper-error pair, modify the following in `src/pipeline/single_process/single_error_identification.py`:
 
 ```python
 # Ensure these variable names match the insertion pipeline
@@ -122,7 +122,7 @@ version_control = "test"
 
 # Specify papers and claim indices
 papers = ["Matchmaker"]  # List of LaTeX folders
-ind = [1]  # Corresponding claim indices
+ind = [0]  # Corresponding claim indices
 ```
 
 Then, you can run:
@@ -133,7 +133,7 @@ python -m src.pipeline.single_process.single_error_identification
 
 ### 3. Batch Processing
 
-The previous files process one paper-error pair at a time, but insertion can be batched using the following modules:
+The previous modules process one paper-error pair at a time, but insertion can be batched using the following modules:
 
 ```bash
 python -m src.pipeline.batch_process.batching_pipeline_gemini

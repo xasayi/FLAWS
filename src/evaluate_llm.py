@@ -72,5 +72,5 @@ if __name__ == "__main__":
             "w",
         ) as f:
             json.dump(identification_dict, f)
-        print("1", compute_accuracy(identification_dict))
+        print(compute_accuracy(identification_dict))
     print("External identification and evaluation completed")
