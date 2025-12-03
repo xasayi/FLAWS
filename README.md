@@ -17,7 +17,7 @@ conda activate llm_error
 
 ## A. Benchmark
 
-The benchmark datasets are hosted on Hugging Face. Download and unzip them, and place the `FLAWS` folder at the same level as `src`:
+The benchmark datasets are hosted on Hugging Face. Download and unzip them, and place the `ALL_GEMINI` and `ALL_OPENAI` folders in another folder `data` the same level as `src`:
 
 - [FLAWS Dataset](https://huggingface.co/datasets/xasayi/FLAWS)
 
