@@ -107,7 +107,7 @@ By running the insertion pipeline, it will perform the following steps sequentia
 3. Filter the error out if it is invalid or trivial.
 4. If the error is not filtered out, insert it into the original LaTeX source.
 5. Localize all of the text excerpts related to the error.
-6. Perform self-identification using the same LLM to filter further filter out the error if it is too easy.
+6. Perform self-identification using the same LLM to further filter out the error if it is too easy to identify.
 7. Compile a modified PDF if the error is not filtered out.
 
 ### 2. Single Error Identification (+ Evaluation)
