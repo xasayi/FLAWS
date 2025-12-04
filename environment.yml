@@ -1,8 +1,10 @@
 name: llm_error
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - python=3.13
+  - ghostscript
   - pip
   - pip:
       - numpy
