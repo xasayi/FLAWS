@@ -13,6 +13,11 @@ conda env create -f environment.yml
 conda activate llm_error
 ```
 
+IMPORTANT: you'll also need **Ghostscript** (required for PDF compression) if it is not install on your system:
+- Windows: download from [https://www.ghostscript.com/releases/gsdnld.html](https://www.ghostscript.com/releases/gsdnld.html)
+- Linux: `sudo apt-get install ghostscript`
+- Mac: `brew install ghostscript`
+
 ---
 
 ## A. Benchmark
