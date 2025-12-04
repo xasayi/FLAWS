@@ -19,7 +19,7 @@ def compute_accuracy(identification_dict: dict[str, list]) -> float:
 
 if __name__ == "__main__":
     """CHANGE THE IDENTIFICATION MODELS"""
-    model_family_identification = "gpt"
+    model_family_identification = "openai"
     model_identification = "gpt-5-2025-08-07"
 
     """DEFAULT EVALUATION PARAMETERS"""
