@@ -7,6 +7,8 @@ from openai import OpenAI
 import anthropic
 import google.generativeai as gemini
 
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
 from src.utils.latex_to_pdf import (
     find_main_tex_file_to_combine,
 )
@@ -204,6 +206,38 @@ def get_completion_grok(
     return response.choices[0].message.content
 
 
+def get_completion_openthought(
+    prompt: str,
+    model: str = "open-thoughts/OpenThinker2-7B",
+    file: str | None = None,
+    temperature: float = 1,
+):
+    if file is not None:
+        content = fitz.open(file)
+        full_content = ""
+        for _, page in enumerate(content, start=1):
+            text = page.get_text("text")
+            full_content += text
+        full_prompt = prompt + "\n\nThis is the input file:\n\n" + full_content
+    else:
+        full_prompt = prompt
+    tokenizer = AutoTokenizer.from_pretrained(model)
+    transformer_model = AutoModelForCausalLM.from_pretrained(model)
+    messages = [
+        {"role": "user", "content": full_prompt},
+    ]
+    inputs = tokenizer.apply_chat_template(
+        messages,
+        add_generation_prompt=True,
+        tokenize=True,
+        return_dict=True,
+        return_tensors="pt",
+    ).to(transformer_model.device)
+
+    outputs = transformer_model.generate(**inputs, max_new_tokens=40)
+    return tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1] :])
+
+
 def call_api(
     prompt: str,
     model: str,
@@ -242,6 +276,7 @@ def completion_response(
         "anthropic": get_completion_anthropic,
         "xai": get_completion_grok,
         "deepseek": get_completion_deepseek,
+        "openthought": get_completion_openthought,
     }
     completion = completion_mapping[model_family]
     llm_output = completion(prompt=prompt, model=model, file=pdf_path)

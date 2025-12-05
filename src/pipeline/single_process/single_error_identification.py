@@ -54,7 +54,8 @@ def identify_error(
 
 def evaluate_error(
     paper: str,
-    model_family_identification: str,
+    model_insertion: str,
+    model_family_insertion: str,
     model_identification: str,
     identified_error_folder: str,
     identify_error_filename: str,
@@ -90,8 +91,8 @@ def evaluate_error(
 
     llm_response = completion_response(
         prompt=input_prompt,
-        model=model_identification,
-        model_family=model_family_identification,
+        model=model_insertion,
+        model_family=model_family_insertion,
         pdf_path=None,
     )
 
@@ -108,6 +109,7 @@ def evaluate_error(
 
 def identify_and_evaluate(
     model_insertion: str,
+    model_family_insertion: str,
     model_identification: str,
     model_family_identification: str,
     error_folder: str,
@@ -184,7 +186,8 @@ def identify_and_evaluate(
         modified_text, _, _, _ = format_generated_error(error_filename)
         successful_identification = evaluate_error(
             paper=paper,
-            model_family_identification=model_family_identification,
+            model_insertion=model_insertion,
+            model_family_insertion=model_family_insertion,
             model_identification=model_identification,
             identified_error_folder=external_identify_folder,
             identify_error_filename=external_identify_filename,
@@ -214,6 +217,7 @@ def identify_and_evaluate(
 if __name__ == "__main__":
     """CHANGE THIS FOR SPECIFIC IDENTIFICATION MODEL"""
     model_insertion = "gemini-2.5-pro"
+    model_family_insertion = "gemini"
     model_family_identification = "deepseek"
     model_identification = "deepseek-reasoner"
 
@@ -242,6 +246,7 @@ if __name__ == "__main__":
         # Define filenames
         identification = identify_and_evaluate(
             model_insertion=model_insertion,
+            model_family_insertion=model_family_insertion,
             model_family_identification=model_family_identification,
             model_identification=model_identification,
             error_folder=error_folder,
