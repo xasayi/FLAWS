@@ -312,6 +312,7 @@ if __name__ == "__main__":
         for c in ind_list:
             identification = identify_and_evaluate(
                 model_insertion=model_insertion,
+                model_family_insertion=model_family_insertion,
                 model_family_identification=model_family_identification,
                 model_identification=model_identification,
                 error_folder=error_folder,
