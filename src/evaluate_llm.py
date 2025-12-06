@@ -25,7 +25,7 @@ if __name__ == "__main__":
     """DEFAULT EVALUATION PARAMETERS"""
     levenshtein_threshold = 0.5
     top_k = 10
-
+    insertion_families = {"gemini-2.5-pro": "gemini", "gpt-5-2025-08-07": "openai"}
     dataset_name = "data"
     model_names = {
         "gemini-2.5-pro": ["ALL_GEMINI", "gemini_all"],
@@ -52,6 +52,7 @@ if __name__ == "__main__":
         for paper, c in valid_errors.items():
             identification = identify_and_evaluate(
                 model_insertion=model_insertion,
+                model_family_insertion=insertion_families[model_insertion],
                 model_family_identification=model_family_identification,
                 model_identification=model_identification,
                 error_folder=error_folder,
