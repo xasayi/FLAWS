@@ -69,7 +69,7 @@ if __name__ == "__main__":
             )
             identification_dict[paper].append({c: identification})
         with open(
-            f"{dataset_name}/{version_control}/{model_insertion}_external_evals.json",
+            f"{dataset_name}/{version_control}/{model_insertion}_external_evals_{model_identification}.json",
             "w",
         ) as f:
             json.dump(identification_dict, f)
