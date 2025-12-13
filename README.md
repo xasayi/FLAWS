@@ -46,7 +46,13 @@ model_family_identification = "deepseek"  # Options: anthropic, deepseek, gemini
 model_identification = "deepseek-reasoner"  # Specific model name
 ```
 
-To run the evaluation code on all the paper-error pairs, use `python -m src.evaluate_llm`, this will produce a JSON results file and print out the identification accuracy. If you only wish to evaluate you model on a subset of paper-error pairs, modify this section:
+To run the evaluation code on all the paper-error pairs, use 
+
+```bash
+python -m src.evaluate_llm
+```
+
+this will produce a JSON results file and print out the identification accuracy. If you only wish to evaluate you model on a subset of paper-error pairs, modify this section:
 
 ```bash
 with open(file, "r") as f:
@@ -175,3 +181,21 @@ password = ""
 # Venue ID (e.g., ICML 2025)
 venue_id = "ICML.cc/2025/Conference"
 ```
+--- 
+
+# Citation
+If you use FLAWS in your research, please cite our paper:
+
+```bibtex
+@misc{xi2025,
+      title={FLAWS: A Benchmark for Error Identification and Localization in Scientific Papers}, 
+      author={Sarina Xi and Vishisht Rao and Justin Payan and Nihar B. Shah},
+      year={2025},
+      eprint={2511.21843},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2511.21843}, 
+}
+```
+
+
