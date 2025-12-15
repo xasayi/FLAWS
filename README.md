@@ -82,6 +82,13 @@ def completion_response(model_family: str, model: str, prompt: str, pdf_path: st
     return llm_output
 ```
 
+### Contribute Your Model Evaluations
+We welcome contributions from the research community! If you have evaluted a model and would like to include it on the FLAWS leaderboard, please follow these steps to contribute your results:
+
+1. Create a PR for the modified code.
+2. Submit this google form: [https://forms.gle/BaB49pxyBU3HcPKx7](https://forms.gle/BaB49pxyBU3HcPKx7).
+3. Once we verify your results, we will include your model into the leaderboard and merge the PR. 
+
 ---
 
 ## B. Frameworks
